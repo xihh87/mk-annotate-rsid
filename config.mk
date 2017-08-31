@@ -1,0 +1,1 @@
+REFERENCE=`{echo "${REFERENCE:-reference}"}
