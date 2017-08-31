@@ -3,6 +3,7 @@
 # clean up early annotations
 #
 results/%.noids.vcf:	data/%.vcf
+	mkdir -p "$(dirname $target)"
 	bcftools annotate \
 		--output 'results/'$stem'.build.noids.vcf' \
 		--output-type z \
@@ -14,6 +15,7 @@ results/%.noids.vcf:	data/%.vcf
 # add rs id to variants
 #
 results/%.vcf.gz:	results/%.noids.vcf
+	mkdir -p "$(dirname $target)"
 	bcftools annotate \
 		--annotations "$REFERENCE" \
 		--columns ID \
